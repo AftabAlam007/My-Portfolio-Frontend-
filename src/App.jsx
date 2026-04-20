@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden" style={{ background: 'linear-gradient(135deg, #030720 0%, #1a0835 50%, #0f0620 100%)' }}>
       <AnimatedBackground />
       <Navbar />
       <Hero />
