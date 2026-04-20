@@ -4,11 +4,14 @@ const AnimatedBackground = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    try {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    let animationId;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return; // Canvas not supported
+      
+      let animationId;
 
     // Mouse and Scroll position tracking
     let mouseX = window.innerWidth / 2;
@@ -247,6 +250,10 @@ const AnimatedBackground = () => {
       window.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(animationId);
     };
+    } catch (error) {
+      console.warn('AnimatedBackground failed to initialize:', error);
+      // Silently fail - the app should still work without the background animation
+    }
   }, []);
 
   return (

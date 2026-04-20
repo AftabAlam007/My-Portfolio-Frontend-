@@ -10,10 +10,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  console.log('App component rendering...');
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
-      {/* <AnimatedBackground /> */}
+      <AnimatedBackground />
       <Navbar />
       <Hero />
       <About />
