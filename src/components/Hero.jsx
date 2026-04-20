@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 
 const Hero = () => {
+  const [resumeDownloaded, setResumeDownloaded] = useState(false);
+
+  const handleResumeClick = () => {
+    setTimeout(() => {
+      setResumeDownloaded(true);
+    }, 150);
+  };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -92,7 +99,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
           >
-            MD Aftab Alam
+            Md Aftab Alam
           </motion.h1>
 
           <motion.h2
@@ -109,8 +116,8 @@ const Hero = () => {
             <Typewriter
               words={[
                 'Java Full Stack Developer',
-                'Spring Boot Expert',
-                'React Specialist',
+                'Spring Boot Developer',
+                'React Developer',
                 'AI Tool Builder',
               ]}
               loop={true}
@@ -150,6 +157,26 @@ const Hero = () => {
             >
               Get In Touch
             </motion.a>
+            {!resumeDownloaded ? (
+              <motion.a
+                href="/Java Fullstack Developer.pdf"
+                download
+                className="bg-white text-gray-900 font-bold py-4 px-8 rounded-full transition duration-300 inline-block hover:bg-gray-100"
+                whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(255, 255, 255, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleResumeClick}
+              >
+                Download Resume
+              </motion.a>
+            ) : (
+              <motion.span
+                className="bg-gray-700 text-gray-200 font-bold py-4 px-8 rounded-full transition duration-300 inline-block"
+                initial={{ opacity: 0.7 }}
+                animate={{ opacity: 1 }}
+              >
+                Resume Downloaded
+              </motion.span>
+            )}
           </motion.div>
 
           {/* Scroll indicator */}
